@@ -103,11 +103,19 @@ public class TestQuestion {
 		System.out.println("글번호가 8번이고 글제목이 홍길동인 레코드 :"+question1.getQnum());
 		
 		
-		//제목이 정확히 일치하는 조건으로 조회
+		//질문 제목이 정확히 일치하는 조건으로 조회
 		List<Questiontbl> questions = questionRepository.findAllByQtitle("홍길동");
 		
 		for(Questiontbl question:questions) {
 			System.out.println(question.getQtitle());
+		}
+		
+		//질문 제목에 특정 문자가 들어 있으면 찾는 조건으로 조회->like
+		List<Questiontbl> likeQuestions = questionRepository.findAllByQtitleLikeOrderByQdateDesc("%질문%");
+		for(Questiontbl question:likeQuestions) {
+			System.out.println(question.getQnum());
+			System.out.println(question.getQtitle());
+			System.out.println("-------------------------");
 		}
 	}
 	

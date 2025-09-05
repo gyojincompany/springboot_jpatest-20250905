@@ -21,4 +21,7 @@ public interface QuestionRepository extends JpaRepository<Questiontbl, Long> { /
 	//제목이 정확히 일치하는 질문글 조회하기
 	public List<Questiontbl> findAllByQtitle(String qtitle);
 	
+	//제목에 특정문자가 존재하면 조회하기->like->최근 글이 위로 오도록 정렬
+	public List<Questiontbl> findAllByQtitleLikeOrderByQdateDesc(String keyword);
+	
 }
